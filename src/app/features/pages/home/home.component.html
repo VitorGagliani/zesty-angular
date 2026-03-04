@@ -1,0 +1,18 @@
+<div class="title">
+  <img src="assets/Zesty-Logo-Preto.svg" alt="Zesty Logo">
+  <h2>Selecione uma mesa</h2>
+</div>
+
+<div class="mesas-wrapper">
+  <div class="mesas-grid">
+    @for (mesa of mesas; track mesa.id) {
+      <mat-card class="mesa-card" (click)="irParaLogin(mesa.id)">
+        <mat-card-content class="mesa-content">
+          <span class="mesa-label">Mesa</span>
+          <span class="mesa-numero">{{ mesa.numero }}</span>
+        </mat-card-content>
+
+      </mat-card>
+    }
+  </div>
+</div>

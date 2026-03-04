@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProdutoService } from '../../../../app/core/services/produto.service';
+import { ProdutoService } from '../../../../../app/core/services/produto.service';
 import { switchMap } from 'rxjs';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
