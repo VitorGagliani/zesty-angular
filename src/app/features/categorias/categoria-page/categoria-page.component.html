@@ -1,0 +1,27 @@
+<div class="bg">
+<mat-icon fontIcon="shopping_bag"></mat-icon>
+
+@for(produto of produtos; track produto.id){
+<div class="card">
+  <mat-card class="card-main">
+    <mat-card-header>
+      <mat-card-title-group>
+        <div class="imagem">
+          <img mat-card-avatar src="{{produto.imagem}}" alt="{{produto.nome}}">
+        </div>
+        <mat-card-title>{{produto.nome}} - <span>
+          {{ produto.preco | currency:'BRL': 'symbol':'1.2-2' }}
+        </span></mat-card-title>
+        <mat-card-subtitle>{{produto.descricao}}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary">Adicionar ao Carrinho</button>
+
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>
+}
+</div>

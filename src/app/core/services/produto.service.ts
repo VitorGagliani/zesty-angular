@@ -1,0 +1,30 @@
+import { Categoria } from './categoria.service';
+import { inject, Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface Produto{
+  id: number;
+  imagem: string;
+  nome: string;
+  preco: number;
+  descricao: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ProdutoService {
+
+  private http = inject(HttpClient);
+  private readonly apiUrl = `${environment.apiUrl}/produto`;
+
+  constructor() { }
+
+  listar(categoriaId: number): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.apiUrl}/listar/${categoriaId}`);
+  }
+
+}
