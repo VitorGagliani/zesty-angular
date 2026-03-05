@@ -6,7 +6,7 @@
 <div class="mesas-wrapper">
   <div class="mesas-grid">
     @for (mesa of mesas; track mesa.id) {
-      <mat-card class="mesa-card" (click)="irParaLogin(mesa.id)">
+      <mat-card class="mesa-card" (click)="irParaLogin(mesa)">
         <mat-card-content class="mesa-content">
           <span class="mesa-label">Mesa</span>
           <span class="mesa-numero">{{ mesa.numero }}</span>

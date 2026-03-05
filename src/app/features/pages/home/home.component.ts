@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Mesa, MesaService } from '../../../core/services/mesa.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
@@ -13,22 +13,24 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   private mesaService = inject(MesaService);
   constructor(private router: Router){}
-
-irParaLogin(idMesa: number){
-  this.router.navigate(['/login'], { queryParams: { mesa: idMesa } });
-}
   mesas: Mesa[] = [];
 
-  ngOnInit(): void {
-    this.mesaService.listar().subscribe({
-      next: (data) => {
-        console.log('Mesas recebidas:', data);
-        this.mesas = data;
-      },
-      error: (err) => console.error(err),
-    });
-  }
+irParaLogin(mesa:Mesa){
+   const mesaDisponivel = this.mesaService.validaStatus(mesa);
+    if (!mesaDisponivel) {
+      alert('Mesa ocupada!');
+      return;
+    }
+  this.router.navigate(['/login'], { queryParams: { mesa: mesa.id } });
+}
+
+ngOnInit(): void {
+  this.mesaService.listar().subscribe(mesas => {
+    console.log(mesas);
+    this.mesas = mesas;
+  });
+}
 }

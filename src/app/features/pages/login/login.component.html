@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="container">
+  <div class="content">
+
+    <div class="logo">
+      <img src="assets/Zesty-Logo-Preto.svg" alt="Zesty Logo">
+    </div>
+
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Digite seu nome</mat-label>
+        <input matInput placeholder="Seu nome" [formControl]="name" (blur)="updateErrorMessage()" required>
+
+        @if (name.invalid) {
+          <mat-error>{{errorMessage}}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Digite seu telefone</mat-label>
+        <input matInput placeholder="16999999999" [formControl]="telefone" (blur)="updateErrorMessage()" required>
+
+        @if (telefone.invalid) {
+          <mat-error>{{errorMessage}}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="button-area">
+      <button mat-raised-button color="primary">
+        Continuar
+      </button>
+    </div>
+
+  </div>
+</div>
