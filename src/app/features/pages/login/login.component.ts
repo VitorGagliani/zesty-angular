@@ -78,9 +78,8 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         console.log('Pedido criado:', res);
 
-        this.router.navigate(['/menu'], {
+        this.router.navigate(['/menu', res.id, 1], {
           queryParams: {
-            pedido: res.id,
             mesa: this.mesaId,
           },
         });

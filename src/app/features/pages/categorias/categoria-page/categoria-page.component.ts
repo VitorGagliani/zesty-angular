@@ -6,7 +6,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CurrencyPipe, CommonModule } from '@angular/common';
 import {MatIconRegistry, MatIconModule} from '@angular/material/icon';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../../../../components/dialog/dialog.component';
 
 @Component({
   selector: 'app-categoria-page',
@@ -18,15 +19,22 @@ import {MatIconRegistry, MatIconModule} from '@angular/material/icon';
 export class CategoriaPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private produtoService = inject(ProdutoService);
-
+  private dialog = inject(MatDialog);
   produtos: any[] = [];
+
+    openDialog(produto: any) {
+    this.dialog.open(DialogComponent, {
+      data: produto,
+      width: '420px'
+    });
+  }
 
 
 ngOnInit() {
   this.route.paramMap
     .pipe(
       switchMap(params => {
-        const id = Number(params.get('id'));
+        const id = Number(params.get('categoriaId'));
         return this.produtoService.listar(id);
       })
     )

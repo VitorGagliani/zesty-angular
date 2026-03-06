@@ -6,12 +6,12 @@
     </div>
     @for(categoria of categorias; track categoria.id) {
     <div class="subcontent">
-      <button mat-button color="primary" (click)="sidenav.toggle()" [routerLink]="['/categoria', categoria.id] ">
+      <button mat-button color="primary" (click)="sidenav.toggle()" [routerLink]="['categoria', categoria.id] ">
         {{ categoria.nome }}
       </button>
     </div>
     }
-    
+
 
   </mat-sidenav>
 
