@@ -54,20 +54,14 @@ export class LoginComponent implements OnInit {
 
   updateErrorMessage() {
     if (this.name.hasError('required')) {
-      this.errorMessage = 'Insira um nome válido';
-    } else if (this.name.hasError('minlength')) {
-      this.errorMessage = 'Nome muito curto';
-    } else if (this.telefone.hasError('required')) {
-      this.errorMessage = 'Insira um telefone válido';
-    } else if (this.telefone.hasError('minlength')) {
-      this.errorMessage = 'Telefone inválido';
-    } else {
-      this.errorMessage = '';
+      this.errorMessage = 'Obrigatório';
+    }
+    if (this.telefone.hasError('required')) {
+      this.errorMessage = 'Obrigatório';
     }
   }
 
   criarPedido() {
-
     const pedido = {
       idMesa: this.mesaId,
       clienteNome: this.name.value!,
@@ -78,11 +72,7 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         console.log('Pedido criado:', res);
 
-        this.router.navigate(['/menu', res.id, 1], {
-          queryParams: {
-            mesa: this.mesaId,
-          },
-        });
+        this.router.navigate(['/menu', this.mesaId, res.id, 'categoria', 1]);
       },
       error: (err) => {
         console.error(err);
