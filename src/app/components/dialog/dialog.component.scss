@@ -1,11 +1,37 @@
+
+.titulo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5px;
+}
+
 .titulo h2 {
   font-size: 24px;
-  text-align: center;
-  margin-top: 10px;
+  margin: 0;
 }
+
+.titulo p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #66bb6a;
+}
+
 
 .texto{
   display: flex;
   justify-content: space-between;
+  text-align: start;
+}
+
+.forms form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+mat-form-field {
+  width: 100%;
 }
 

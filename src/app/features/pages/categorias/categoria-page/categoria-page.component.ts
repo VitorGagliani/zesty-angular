@@ -25,7 +25,7 @@ export class CategoriaPageComponent implements OnInit {
     openDialog(produto: any) {
     this.dialog.open(DialogComponent, {
       data: produto,
-      width: '420px'
+      width: '520px'
     });
   }
 

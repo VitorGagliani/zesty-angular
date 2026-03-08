@@ -1,12 +1,12 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [opened]="false" class="navcontent">
+  <mat-sidenav #sidenav [opened]="true" class="navcontent">
     <div class="title">
       <img class="logo" src="assets/Zesty-Logo.svg" alt="">
       <h1>Categorias</h1>
     </div>
     @for(categoria of categorias; track categoria.id) {
     <div class="subcontent">
-      <button mat-button color="primary" (click)="sidenav.toggle()" [routerLink]="['categoria', categoria.id] ">
+      <button mat-button color="primary"  (click)="sidenav.toggle()" [routerLink]="['categoria', categoria.id] ">
         {{ categoria.nome }}
       </button>
     </div>
