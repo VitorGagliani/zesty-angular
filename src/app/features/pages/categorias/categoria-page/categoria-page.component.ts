@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../components/dialog/dialog.component';
 import { DialogCarrinhoComponent } from './dialog-carrinho/dialog-carrinho.component';
+import { PedidoSessionService } from '../../../../core/services/pedido-session.service';
 
 @Component({
   selector: 'app-categoria-page',
@@ -27,33 +28,35 @@ export class CategoriaPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private produtoService = inject(ProdutoService);
   private dialog = inject(MatDialog);
+  private session = inject(PedidoSessionService);
 
   produtos: any[] = [];
   pedidoId!: number;
   mesa!: number;
 
   ngOnInit() {
+    this.route.parent?.paramMap.subscribe((params) => {
+      this.mesa = Number(params.get('mesa'));
+      this.pedidoId = Number(params.get('pedido'));
 
-  this.route.parent?.paramMap.subscribe(params => {
-    this.mesa = Number(params.get('mesa'));
-    this.pedidoId = Number(params.get('pedido'));
+      this.session.mesa = this.mesa;
+      this.session.pedidoId = this.pedidoId;
 
-    console.log("MESA:", this.mesa);
-    console.log("PEDIDO:", this.pedidoId);
-  });
-
-  this.route.paramMap
-    .pipe(
-      switchMap((params) => {
-        const categoriaId = Number(params.get('categoriaId'));
-        return this.produtoService.listar(categoriaId);
-      })
-    )
-    .subscribe((data) => {
-      this.produtos = data;
+      console.log('MESA:', this.mesa);
+      console.log('PEDIDO:', this.pedidoId);
     });
 
-}
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          const categoriaId = Number(params.get('categoriaId'));
+          return this.produtoService.listar(categoriaId);
+        }),
+      )
+      .subscribe((data) => {
+        this.produtos = data;
+      });
+  }
 
   openDialog(produto: any) {
     this.dialog.open(DialogComponent, {

@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { DialogCarrinhoComponent } from '../../../app/features/pages/categorias/categoria-page/dialog-carrinho/dialog-carrinho.component';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-
+import { PedidoSessionService } from '../../core/services/pedido-session.service';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +30,7 @@ export class HeaderComponent {
   private categoriaService = inject(CategoriaService);
   private route = inject(ActivatedRoute);
   private dialog = inject(MatDialog);
-
+  private session = inject(PedidoSessionService);
 
   categorias: Categoria[] = [];
   pedidoId!: number;
@@ -43,7 +43,7 @@ export class HeaderComponent {
       },
       error: (err) => console.error(err),
     });
-     this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.pedidoId = Number(params['pedido']);
     });
   }
@@ -52,8 +52,8 @@ export class HeaderComponent {
     this.dialog.open(DialogCarrinhoComponent, {
       width: '500px',
       data: {
-        idPedido: this.pedidoId
-      }
+        idPedido: this.session.pedidoId,
+      },
     });
   }
 }

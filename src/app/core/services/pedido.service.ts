@@ -25,12 +25,11 @@ export class PedidoService {
     return this.http.post(`${this.apiUrl}/novo`, data);
   }
 
-  listarCarrinho(data: VePedido): Observable<any> {
-    return this.http.get(`${this.apiUrl}/pedido`, {
-      params: {
-        idPedido: data.idPedido,
-      },
-    });
-  }
-
+listarCarrinho(idPedido: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/${idPedido}`, {
+    params: {
+      idPedido: idPedido,
+    },
+  });
+}
 }
