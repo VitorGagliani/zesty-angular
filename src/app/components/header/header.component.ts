@@ -8,6 +8,10 @@ import {
   CategoriaService,
 } from '../../core/services/categoria.service';
 import { RouterModule } from '@angular/router';
+import { DialogCarrinhoComponent } from '../../../app/features/pages/categorias/categoria-page/dialog-carrinho/dialog-carrinho.component';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-header',
@@ -24,8 +28,12 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
   private categoriaService = inject(CategoriaService);
+  private route = inject(ActivatedRoute);
+  private dialog = inject(MatDialog);
+
 
   categorias: Categoria[] = [];
+  pedidoId!: number;
 
   ngOnInit(): void {
     this.categoriaService.listar().subscribe({
@@ -34,6 +42,18 @@ export class HeaderComponent {
         this.categorias = data;
       },
       error: (err) => console.error(err),
+    });
+     this.route.queryParams.subscribe(params => {
+      this.pedidoId = Number(params['pedido']);
+    });
+  }
+
+  abrirCarrinho() {
+    this.dialog.open(DialogCarrinhoComponent, {
+      width: '500px',
+      data: {
+        idPedido: this.pedidoId
+      }
     });
   }
 }
