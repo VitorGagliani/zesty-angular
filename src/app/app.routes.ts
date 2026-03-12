@@ -3,6 +3,7 @@ import { CategoriaPageComponent } from './features/pages/categorias/categoria-pa
 import { LoginComponent } from './features/pages/login/login.component';
 import { HomeComponent } from './features/pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CozinhaComponent } from './features/pages/cozinha/cozinha.component';
 
 export const routes: Routes = [
    {
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'cozinha',
+    component: CozinhaComponent
   }
 
 ];

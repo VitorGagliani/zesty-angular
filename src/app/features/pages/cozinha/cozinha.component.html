@@ -1,1 +1,144 @@
-<p>cozinha works!</p>
+<div class="title">
+  <img class="logo" src="assets/Zesty-Logo.svg" alt="">
+  <h2>Acompanhamento de pedidos</h2>
+</div>
+
+
+<!-- <div class="filtro-status">
+  <div class="filtros">
+
+    <!-- mesas 
+    <mat-form-field appearance="outline" class="status-select">
+
+      <mat-label class="label-filtro">Mesa</mat-label>
+
+      <mat-select value="TODAS">
+
+        <mat-option value="TODAS">Todas</mat-option>
+
+        @for(mesa of mesas; track mesa.id){
+        <mat-option [value]="mesa.id">
+          {{mesa.numero}}
+        </mat-option>
+        }
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+  </div>
+</div> -->
+
+
+
+<div class="kds-container">
+
+  <!-- ABERTOS -->
+  <div class="status-coluna">
+
+    <h3 class="coluna-titulo aberto">Abertos</h3>
+
+    <div class="coluna-scroll">
+
+      @for(comanda of grids; track comanda.id){
+        @if(comanda.status === 'Aberto'){
+
+        <mat-card class="pedido-card">
+
+          <div class="card-header">
+            <h3>Comanda {{comanda.id}}</h3>
+
+            <span class="status-aberto">
+              {{ getStatusLabel(comanda.status) }}
+            </span>
+          </div>
+
+          <div class="card-content">
+            <p><strong>Produto:</strong> {{comanda.Produto}}</p>
+            <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
+            <p><strong>Observação:</strong> {{comanda.observacao}}</p>
+            <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
+          </div>
+
+        </mat-card>
+
+        }
+      }
+
+    </div>
+  </div>
+
+
+  <!-- PREPARO -->
+  <div class="status-coluna">
+
+    <h3 class="coluna-titulo preparo">Preparando</h3>
+
+    <div class="coluna-scroll">
+
+      @for(comanda of grids; track comanda.id){
+        @if(comanda.status === 'EmPreparo'){
+
+        <mat-card class="pedido-card">
+
+          <div class="card-header">
+            <h3>Comanda {{comanda.id}}</h3>
+
+            <span class="status-preparando">
+              {{ getStatusLabel(comanda.status) }}
+            </span>
+          </div>
+
+          <div class="card-content">
+            <p><strong>Produto:</strong> {{comanda.Produto}}</p>
+            <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
+            <p><strong>Observação:</strong> {{comanda.observacao}}</p>
+            <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
+          </div>
+
+        </mat-card>
+
+        }
+      }
+
+    </div>
+  </div>
+
+
+  <!-- PRONTO -->
+  <div class="status-coluna">
+
+    <h3 class="coluna-titulo pronto">Prontos</h3>
+
+    <div class="coluna-scroll">
+
+      @for(comanda of grids; track comanda.id){
+        @if(comanda.status === 'Finalizado'){
+
+        <mat-card class="pedido-card">
+
+          <div class="card-header">
+            <h3>Comanda {{comanda.id}}</h3>
+
+            <span class="status-pronto">
+              {{ getStatusLabel(comanda.status) }}
+            </span>
+          </div>
+
+          <div class="card-content">
+            <p><strong>Produto:</strong> {{comanda.Produto}}</p>
+            <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
+            <p><strong>Observação:</strong> {{comanda.observacao}}</p>
+            <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
+          </div>
+
+        </mat-card>
+
+        }
+      }
+
+    </div>
+  </div>
+
+</div>

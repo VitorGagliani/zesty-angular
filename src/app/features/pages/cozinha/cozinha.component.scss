@@ -1,0 +1,160 @@
+.title{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:10px 40px;
+  background:#e8f5e9;
+  margin-bottom:40px;
+}
+
+.logo{
+  width:40px;
+}
+
+.pedido-card{
+  border-radius:12px;
+  padding:15px;
+  box-shadow:2px 4px 10px rgba(2,0,0,0.1);
+  width: 300px;
+}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  gap: 10px;
+}
+
+.card-header span{
+  font-weight: 500;
+}
+
+.paragrafo{
+  display: flex;
+  gap: 4px;
+}
+
+.card-header h3{
+  font-size:18px;
+  font-weight:600;
+}
+
+.card-content p{
+  display:flex;
+  justify-content:space-between;
+  margin:6px 0;
+  font-size:14px;
+  color: #4E545C;
+}
+
+.card-content span{
+  color:#4E545C;
+}
+
+/* STATUS */
+
+.status{
+  padding:4px 10px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.status-preparando {
+  background-color: #e6f5f7;
+  color: #164f8a;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.status-pronto {
+  background-color: #ff9696;
+  color: #680a0a;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.status-aberto {
+  background-color: #dbefdc;
+  color: #459049;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+.select{
+  margin-top:10px;
+}
+
+.status-select{
+  width:180px;
+  flex:0 0 auto;
+}
+
+/* remove espaço de erro/hint que aumenta altura */
+::ng-deep .status-select .mat-mdc-form-field-subscript-wrapper{
+  display:none;
+}
+
+/* deixa o select mais baixo */
+::ng-deep .status-select .mat-mdc-text-field-wrapper{
+  height:40px;
+}
+
+
+.filtro-status{
+  display:flex;
+  padding: 10px 40px;
+  margin-bottom:40px;
+}
+
+.filtros{
+  display:flex;
+  gap:20px;
+  padding:20px;
+  align-items:center;
+  box-shadow:2px 4px 10px rgba(2,0,0,0.1);
+}
+.label-filtro{
+  color: #4E545C;
+}
+
+.kds-container{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:30px;
+  padding:20px 40px;
+}
+
+.status-coluna{
+  background:#f5f5f5;
+  border-radius:12px;
+  padding:15px;
+}
+
+.coluna-titulo{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:15px;
+}
+
+.coluna-scroll{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-height:70vh;
+  overflow-y:auto;
+}
+
+/* cores dos títulos */
+
+.aberto{
+  color:#2e7d32;
+}
+
+.preparo{
+  color:#1565c0;
+}
+
+.pronto{
+  color:#c62828;
+}

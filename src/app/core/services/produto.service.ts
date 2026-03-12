@@ -27,4 +27,5 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${this.apiUrl}/listar/${categoriaId}`);
   }
 
+
 }
