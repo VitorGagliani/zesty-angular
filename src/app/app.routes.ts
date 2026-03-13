@@ -31,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'cozinha',
     component: CozinhaComponent
+  },
+  {
+    path: 'adm',
+    loadChildren: () => import('./../app/features/pages/admin/admin.module').then(m => m.AdminModule)
   }
 
 ];
