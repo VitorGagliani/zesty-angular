@@ -20,7 +20,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatSelectModule,
     MatFormFieldModule,
     CommonModule,
-    MatLabel,
     ScrollingModule,
   ],
   templateUrl: './cozinha.component.html',
