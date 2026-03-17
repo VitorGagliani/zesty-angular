@@ -73,7 +73,6 @@ export class CozinhaComponent implements OnInit {
   ngOnInit(): void {
     this.pedidoSerivce.listarCozinha().subscribe((grids) => {
       this.grids = grids;
-      console.log(grids);
     });
     this.mesaSerice.listar().subscribe((mesas) => {
       this.mesas = mesas;

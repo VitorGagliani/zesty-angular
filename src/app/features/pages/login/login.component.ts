@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
 
     this.pedidoService.criarPedido(pedido).subscribe({
       next: (res: any) => {
-        console.log('Pedido criado:', res);
 
         this.router.navigate(['/menu', this.mesaId, res.id, 'categoria', 1]);
       },

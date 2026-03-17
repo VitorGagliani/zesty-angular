@@ -42,8 +42,7 @@ export class CategoriaPageComponent implements OnInit {
       this.session.mesa = this.mesa;
       this.session.pedidoId = this.pedidoId;
 
-      console.log('MESA:', this.mesa);
-      console.log('PEDIDO:', this.pedidoId);
+
     });
 
     this.route.paramMap

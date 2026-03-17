@@ -29,7 +29,6 @@ irParaLogin(mesa:Mesa){
 
 ngOnInit(): void {
   this.mesaService.listar().subscribe(mesas => {
-    console.log(mesas);
     this.mesas = mesas;
   });
 }
