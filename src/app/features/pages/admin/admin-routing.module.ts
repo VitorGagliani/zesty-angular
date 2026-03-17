@@ -6,6 +6,7 @@ import path from 'path';
 import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { MesasComponent } from './pages/mesas/mesas.component';
+import { title } from 'process';
 
 const routes: Routes = [
   {
@@ -14,23 +15,28 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: {title: 'Dashboard'}
       },
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: {title: 'Dashboard'}
       },
       {
         path: 'categorias',
-        component: CategoriasComponent
+        component: CategoriasComponent,
+        data: {title: 'Categorias'}
       },
       {
         path: 'produtos',
-        component: ProdutosComponent
+        component: ProdutosComponent,
+        data: {title: 'Produtos'}
       },
       {
         path: 'mesas',
-        component: MesasComponent
+        component: MesasComponent,
+        data: {title: 'Mesas'}
       }
     ]
   }

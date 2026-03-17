@@ -1,0 +1,60 @@
+.section-title {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  font-weight: 600;
+  font-size: 18px;
+  color: #444;
+  margin: 25px 0;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.section-title::before {
+  margin-right: 10px;
+}
+
+.section-title::after {
+  margin-left: 10px;
+}
+
+.card h2,
+h3 {
+  margin: 0;
+}
+
+.card h2{
+  font-size: 18px;
+  color: #4E545C;
+}
+
+.card h3{
+  font-size: 16px;
+  color: #8D9797;
+}
+
+.cards {
+  padding: 20px 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  min-width: 300px;
+  display: grid;
+  height: 100px;
+}
+
+.card h3{
+  padding: 10px 20px;
+}

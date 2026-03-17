@@ -20,8 +20,11 @@ mat-toolbar {
   align-items: center;
 }
 
-.spacer {
-  flex: 1;
+.page-title{
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #1b5e20;
 }
 
 .subcontent {
@@ -57,7 +60,12 @@ mat-toolbar {
   height: 100vh;
 }
 
-.mat-mdc-button {
+.mat-sidenav-content{
+  align-items: center;
+}
+
+.mat-toolbar{
+  background-color: #e8f5e9;
 }
 
 .title {
