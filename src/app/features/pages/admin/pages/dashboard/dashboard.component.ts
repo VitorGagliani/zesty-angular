@@ -13,8 +13,9 @@ import { Component, inject, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   private dashboardService = inject(DashboardService);
+
   produto!: produtoMaisPedido;
   pedidos!: pedidos;
   pedidosHoje!: pedidos;
@@ -23,28 +24,35 @@ export class DashboardComponent {
   faturamentoDia!: faturamento;
 
   ngOnInit(): void {
+    this.carregarDashboard();
+  }
+
+  
+  carregarDashboard() {
     this.dashboardService.produtoMaisPedido().subscribe((produto) => {
-      this.produto = produto[0];
+      this.produto = produto[0] ?? { nome: '-' };
     });
+
     this.dashboardService.totalMes().subscribe((pedidos) => {
-      this.pedidos = pedidos[0];
+      this.pedidos = pedidos[0] ?? { total: 0 };
     });
+
     this.dashboardService.totalHoje().subscribe((pedidosHoje) => {
-      this.pedidosHoje = pedidosHoje[0];
+      this.pedidosHoje = pedidosHoje[0] ?? { total: 0 };
     });
+
     this.dashboardService.emPreparo().subscribe((pedidosEmPreparo) => {
-      this.pedidosEmPreparo = pedidosEmPreparo[0];
+      this.pedidosEmPreparo = pedidosEmPreparo[0] ?? { total: 0 };
     });
+
     this.dashboardService.faturamentoMes().subscribe((faturamento) => {
-      this.faturamento = faturamento[0];
+      this.faturamento = faturamento[0] ?? { faturamento: 0 };
     });
 
     this.dashboardService.faturamentoDia().subscribe((res) => {
-      const valor = res[0]?.faturamento ?? 0;
-
-      this.faturamentoDia = { faturamento: valor };
-
-      console.log(this.faturamentoDia);
+      this.faturamentoDia = {
+        faturamento: res[0]?.faturamento ?? 0,
+      };
     });
   }
 }

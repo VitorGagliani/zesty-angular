@@ -8,6 +8,26 @@
   margin: 25px 0;
 }
 
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-atualizar {
+  background: #E8F5E9;
+  color: #1C2E1C;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-atualizar:hover {
+  background: #D8E3D9;
+}
+
 .section-title::before,
 .section-title::after {
   content: "";
