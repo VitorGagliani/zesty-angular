@@ -11,6 +11,10 @@ export interface pedidos {
   total: number;
 }
 
+export interface faturamento {
+  faturamento: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,11 +30,19 @@ export class DashboardService {
     return this.http.get<pedidos[]>(`${this.apiUrl}/totalPedidosMes`);
   }
 
-  totalHoje(): Observable<pedidos[]>{
+  totalHoje(): Observable<pedidos[]> {
     return this.http.get<pedidos[]>(`${this.apiUrl}/totalPedidosHoje`);
   }
 
-  emPreparo(): Observable<pedidos[]>{
-    return this.http.get<pedidos[]>(`${this.apiUrl}/pedidosEmPreparo`)
+  emPreparo(): Observable<pedidos[]> {
+    return this.http.get<pedidos[]>(`${this.apiUrl}/pedidosEmPreparo`);
+  }
+
+  faturamentoMes(): Observable<faturamento[]> {
+    return this.http.get<faturamento[]>(`${this.apiUrl}/faturamentoMes`);
+  }
+
+  faturamentoDia(): Observable<faturamento[]> {
+    return this.http.get<faturamento[]>(`${this.apiUrl}/faturamentoDia`);
   }
 }
