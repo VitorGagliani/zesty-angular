@@ -1,27 +1,154 @@
-# ZestyFront
+# 🍽️ Zesty — Sistema de Gestão para Restaurantes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+O **Zesty** é um sistema completo para gerenciamento de pedidos em restaurantes, com foco em **automação, organização e agilidade no atendimento**.
 
-## Development server
+O projeto simula um ambiente real, com fluxo de pedidos desde o cliente até a cozinha, incluindo acompanhamento em tempo real e dashboard gerencial.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 👨‍🍳 Cozinha (KDS — Kitchen Display System)
 
-## Build
+* Visualização de pedidos por status:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  * 🟢 Aberto
+  * 🟡 Em preparo
+  * 🔵 Finalizado
+* Atualização de status dos pedidos
+* Organização por colunas (estilo iFood)
+* Atualização dinâmica da tela
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 📊 Dashboard
 
-## Running end-to-end tests
+* Produto mais pedido
+* Total de pedidos do mês
+* Total de pedidos do dia
+* Pedidos em preparo
+* Faturamento mensal
+* Faturamento diário
+* Atualização manual dos dados
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+### 🧾 Pedidos
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Criação de pedidos por mesa
+* Associação de produtos
+* Controle de quantidade e observações
+* Fluxo de status do pedido
+
+---
+
+### 🪑 Mesas
+
+* Cadastro de mesas
+* Associação de pedidos às mesas
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+### Frontend
+
+* Angular
+* Angular Material
+* TypeScript
+* SCSS
+
+### Backend
+
+* Java
+* Spring Boot
+* JPA / Hibernate
+
+### Banco de Dados
+
+* PostgreSQL
+
+---
+
+## 🧠 Arquitetura
+
+* Separação em camadas (Controller, Service, Repository)
+* Uso de DTOs para comunicação entre backend e frontend
+* API REST
+* Frontend standalone components (Angular moderno)
+
+---
+
+## 📸 Preview
+
+*(adicione aqui prints do sistema depois — isso aumenta MUITO o valor do projeto)*
+
+---
+
+## ⚙️ Como rodar o projeto
+
+### 🔧 Backend
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/zesty
+
+# Entre no projeto
+cd backend
+
+# Rode a aplicação
+./mvnw spring-boot:run
+```
+
+---
+
+### 💻 Frontend
+
+```bash
+cd frontend
+
+npm install
+
+ng serve
+```
+
+Acesse em:
+
+```
+http://localhost:4200
+```
+
+---
+
+## 📌 Próximas melhorias
+
+* 🔄 WebSocket para atualização em tempo real
+* 📊 Gráficos no dashboard
+* 🔔 Notificações de novos pedidos
+* 📱 Transformar em PWA (app instalável)
+* 🛒 Sistema de carrinho completo
+* 🔐 Autenticação de usuários
+
+---
+
+## 🎯 Objetivo do projeto
+
+Este projeto foi desenvolvido com foco em:
+
+* Aprendizado prático de desenvolvimento full stack
+* Simulação de sistema real de restaurante
+* Aplicação de boas práticas de arquitetura
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Vitor**
+
+---
+
+## ⭐ Considerações finais
+
+O Zesty demonstra na prática a construção de um sistema completo, desde o backend até a interface, focando em usabilidade e performance.
+
+Se você gostou do projeto, deixe uma ⭐ no repositório!
