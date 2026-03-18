@@ -31,28 +31,39 @@ export class CozinhaComponent implements OnInit {
   grids: Grid[] = [];
   mesas: Mesa[] = [];
 
+//recarrega grid quando chamo ao atualizar status
+
+  atualizar() {
+  this.pedidoSerivce.listarCozinha().subscribe((grids) => {
+    this.grids = grids;
+  });
+}
+
   mudarStatus(id: number, status: string) {
-    if (status === 'PREPARO') {
-      this.pedidoSerivce.prepararComanda(id).subscribe({
-        next: () => {
-          console.log('Comanda enviada para preparo');
-        },
-        error: (err) => {
-          console.error('Erro ao preparar comanda', err);
-        },
-      });
-    }
-    if (status === 'PRONTO') {
-      this.pedidoSerivce.fecharComanda(id).subscribe({
-        next: () => {
-          console.log('Comanda fechada');
-        },
-        error: (err) => {
-          console.error('Erro ao preparar comanda', err);
-        },
-      });
-    }
+  if (status === 'PREPARO') {
+    this.pedidoSerivce.prepararComanda(id).subscribe({
+      next: () => {
+        console.log('Comanda enviada para preparo');
+        this.atualizar();
+      },
+      error: (err) => {
+        console.error('Erro ao preparar comanda', err);
+      },
+    });
   }
+
+  if (status === 'PRONTO') {
+    this.pedidoSerivce.fecharComanda(id).subscribe({
+      next: () => {
+        console.log('Comanda fechada');
+        this.atualizar();
+      },
+      error: (err) => {
+        console.error('Erro ao preparar comanda', err);
+      },
+    });
+  }
+}
 
   getStatusLabel(status: string): string {
     switch (status) {

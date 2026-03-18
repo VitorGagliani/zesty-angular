@@ -7,7 +7,7 @@
 <!-- <div class="filtro-status">
   <div class="filtros">
 
-    <!-- mesas 
+    <!-- mesas
     <mat-form-field appearance="outline" class="status-select">
 
       <mat-label class="label-filtro">Mesa</mat-label>
@@ -42,28 +42,39 @@
     <div class="coluna-scroll">
 
       @for(comanda of grids; track comanda.id){
-        @if(comanda.status === 'Aberto'){
+      @if(comanda.status === 'Aberto'){
 
-        <mat-card class="pedido-card">
+      <mat-card class="pedido-card">
 
-          <div class="card-header">
-            <h3>Comanda {{comanda.id}}</h3>
+        <div class="card-header">
+          <h3>Comanda {{comanda.id}}</h3>
 
-            <span class="status-aberto">
-              {{ getStatusLabel(comanda.status) }}
-            </span>
-          </div>
+          <span class="status-aberto">
+            {{ getStatusLabel(comanda.status) }}
+          </span>
+        </div>
 
-          <div class="card-content">
-            <p><strong>Produto:</strong> {{comanda.Produto}}</p>
-            <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
-            <p><strong>Observação:</strong> {{comanda.observacao}}</p>
-            <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
-          </div>
+        <div class="card-content">
+          <p><strong>Produto:</strong> {{comanda.Produto}}</p>
+          <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
+          <p><strong>Observação:</strong> {{comanda.observacao}}</p>
+          <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
+        </div>
 
-        </mat-card>
+        <div class="card-actions">
+          <mat-form-field appearance="outline" class="status-select">
+            <mat-label>Status</mat-label>
 
-        }
+            <mat-select (selectionChange)="mudarStatus(comanda.id, $event.value)">
+              <mat-option value="PREPARO">Preparar</mat-option>
+            </mat-select>
+
+          </mat-form-field>
+        </div>
+
+      </mat-card>
+
+      }
       }
 
     </div>
@@ -78,28 +89,37 @@
     <div class="coluna-scroll">
 
       @for(comanda of grids; track comanda.id){
-        @if(comanda.status === 'EmPreparo'){
+      @if(comanda.status === 'EmPreparo'){
 
-        <mat-card class="pedido-card">
+      <mat-card class="pedido-card">
 
-          <div class="card-header">
-            <h3>Comanda {{comanda.id}}</h3>
+        <div class="card-header">
+          <h3>Comanda {{comanda.id}}</h3>
 
-            <span class="status-preparando">
-              {{ getStatusLabel(comanda.status) }}
-            </span>
-          </div>
+          <span class="status-preparando">
+            {{ getStatusLabel(comanda.status) }}
+          </span>
+        </div>
 
-          <div class="card-content">
-            <p><strong>Produto:</strong> {{comanda.Produto}}</p>
-            <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
-            <p><strong>Observação:</strong> {{comanda.observacao}}</p>
-            <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
-          </div>
+        <div class="card-content">
+          <p><strong>Produto:</strong> {{comanda.Produto}}</p>
+          <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
+          <p><strong>Observação:</strong> {{comanda.observacao}}</p>
+          <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
+        </div>
+        <div class="card-actions">
+          <mat-form-field appearance="outline" class="status-select">
+            <mat-label>Status</mat-label>
 
-        </mat-card>
+            <mat-select (selectionChange)="mudarStatus(comanda.id, $event.value)">
+              <mat-option value="PRONTO">Finalizar</mat-option>
+            </mat-select>
 
-        }
+          </mat-form-field>
+        </div>
+      </mat-card>
+
+      }
       }
 
     </div>
@@ -114,28 +134,28 @@
     <div class="coluna-scroll">
 
       @for(comanda of grids; track comanda.id){
-        @if(comanda.status === 'Finalizado'){
+      @if(comanda.status === 'Finalizado'){
 
-        <mat-card class="pedido-card">
+      <mat-card class="pedido-card">
 
-          <div class="card-header">
-            <h3>Comanda {{comanda.id}}</h3>
+        <div class="card-header">
+          <h3>Comanda {{comanda.id}}</h3>
 
-            <span class="status-pronto">
-              {{ getStatusLabel(comanda.status) }}
-            </span>
-          </div>
+          <span class="status-pronto">
+            {{ getStatusLabel(comanda.status) }}
+          </span>
+        </div>
 
-          <div class="card-content">
-            <p><strong>Produto:</strong> {{comanda.Produto}}</p>
-            <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
-            <p><strong>Observação:</strong> {{comanda.observacao}}</p>
-            <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
-          </div>
+        <div class="card-content">
+          <p><strong>Produto:</strong> {{comanda.Produto}}</p>
+          <p><strong>Quantidade:</strong> {{comanda.quantidade}}</p>
+          <p><strong>Observação:</strong> {{comanda.observacao}}</p>
+          <p><strong>Mesa:</strong> #{{comanda.mesa_id}}</p>
+        </div>
 
-        </mat-card>
+      </mat-card>
 
-        }
+      }
       }
 
     </div>
