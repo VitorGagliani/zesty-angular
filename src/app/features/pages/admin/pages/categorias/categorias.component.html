@@ -1,1 +1,32 @@
-<p>categorias works!</p>
+<div class="container">
+
+  <!-- AÇÕES -->
+  <div class="actions">
+    <button (click)="abrirDialog()">
+      <div class="card">
+        <mat-icon color="primary" class="icon-card">add</mat-icon>
+        <h3>Nova categoria</h3>
+      </div>
+    </button>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let categoria of categoria" (click)="abrirDialogEditar()">
+          <td>{{ categoria.id }}</td>
+          <td>{{ categoria.nome }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

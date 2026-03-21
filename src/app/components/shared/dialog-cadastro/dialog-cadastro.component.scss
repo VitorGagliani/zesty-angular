@@ -1,0 +1,11 @@
+.dialog-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
