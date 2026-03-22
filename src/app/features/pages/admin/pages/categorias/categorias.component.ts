@@ -27,30 +27,65 @@ export class CategoriasComponent implements OnInit {
 
   constructor(private dialog: MatDialog) {}
 
-  ngOnInit() {
+
+  //função para carregar a grid
+  private carregarGrid() {
     this.categoriaService.listar().subscribe((categoria) => {
       this.categoria = categoria;
-      console.log(categoria);
     });
   }
 
-  abrirDialog() {
-    this.dialog.open(DialogCadastroComponent, {
-      width: '800px',
-      data: {
-        titulo: 'Cadastrar categoria',
-        botao: 'Adicionar',
-      },
-    });
+  //aqui to chamando a função para quando carregar a pagina, ja carregar a função
+  ngOnInit() {
+    this.carregarGrid();
   }
 
-  abrirDialogEditar() {
-    this.dialog.open(DialogCadastroComponent, {
-      width: '800px',
-      data: {
-        titulo: 'Editar categoria',
-        botao: 'Salvar',
-      },
-    });
-  }
+abrirDialog() {
+  const dialogRef = this.dialog.open(DialogCadastroComponent, {
+    width: '800px',
+    data: {
+      titulo: 'Cadastrar categoria',
+      botao: 'Adicionar',
+    },
+  });
+//se teve retorno, chama a api e recarrega a grid
+  dialogRef.afterClosed().subscribe((result) => {
+    if (result) {
+      this.categoriaService.criarCategoria(result).subscribe(() => {
+        this.carregarGrid();
+      });
+    }
+  });
+}
+
+    abrirDialogEditar(categoria: Categoria) {
+      const dialogRef = this.dialog.open(DialogCadastroComponent, {
+        width: '800px',
+        data: {
+          titulo: 'Editar categoria',
+          botao: 'Salvar',
+          categoria: categoria,
+        },
+      });
+      //se teve retorno, chama a api e recarrega a grid
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.categoriaService.editarCategoria(result).subscribe(() => {
+            this.carregarGrid();
+          });
+        }
+      });
+    }
+
+deletarCategoria(id: number) {
+  this.categoriaService.excluirCategoria(id).subscribe({
+    next: () => {
+      this.carregarGrid();
+    },
+    error: (err) => {
+      alert(err.error);
+    }
+  });
+}
+
 }

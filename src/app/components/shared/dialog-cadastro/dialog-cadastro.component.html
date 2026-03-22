@@ -6,7 +6,7 @@
   <div class="info">
     <mat-form-field appearance="outline">
       <mat-label>Descrição</mat-label>
-      <input matInput required>
+      <input matInput [formControl]="nome" required>
 
 
     </mat-form-field>
@@ -15,7 +15,7 @@
   </div>
 
   <div class="acoes">
-    <button mat-button color="primary">
+    <button mat-button color="primary" (click)="salvar()">
       {{data.botao}}
     </button>
   </div>

@@ -12,6 +12,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ComandaService } from '../../core/services/comanda.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 interface DialogData {
   idPedido: number;
@@ -43,7 +44,8 @@ interface DialogData {
 export class DialogComponent {
 
   private comanda = inject(ComandaService);
-    data: DialogData = inject(MAT_DIALOG_DATA);
+  data: DialogData = inject(MAT_DIALOG_DATA);
+  private dialogRef = inject(MatDialogRef<DialogComponent>);
 
   form = new FormGroup({
     quantidade: new FormControl(1, [Validators.required, Validators.min(1)]),
@@ -69,6 +71,8 @@ export class DialogComponent {
 
       }
     })
+
+    this.dialogRef.close();
 
   }
 

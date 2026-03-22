@@ -17,13 +17,17 @@
         <tr>
           <th>ID</th>
           <th>Categoria</th>
+          <th></th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let categoria of categoria" (click)="abrirDialogEditar()">
-          <td>{{ categoria.id }}</td>
-          <td>{{ categoria.nome }}</td>
+        <tr *ngFor="let categoria of categoria" >
+          <td (click)="abrirDialogEditar(categoria)">{{ categoria.id }}</td>
+          <td (click)="abrirDialogEditar(categoria)">{{ categoria.nome }}</td>
+          <td><button (click)="deletarCategoria(categoria.id)">
+            <mat-icon class="mat-18" color="primary">delete</mat-icon>
+          </button></td>
         </tr>
       </tbody>
     </table>
