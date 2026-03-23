@@ -1,1 +1,36 @@
-<p>produtos works!</p>
+<div class="container">
+
+  <!-- AÇÕES -->
+  <div class="actions">
+    <button (click)="abrirCadastro()">
+      <div class="card">
+        <mat-icon color="primary" class="icon-card">add</mat-icon>
+        <h3>Nova categoria</h3>
+      </div>
+    </button>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Categoria</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let produto of produtos" >
+          <td >{{ produto.id }}</td>
+          <td >{{ produto.nome }}</td>
+          <td><button >
+            <mat-icon class="mat-18" color="primary">delete</mat-icon>
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

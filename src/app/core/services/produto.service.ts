@@ -1,4 +1,3 @@
-import { Categoria } from './categoria.service';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -26,6 +25,14 @@ export class ProdutoService {
   listar(categoriaId: number): Observable<Produto[]> {
     return this.http.get<Produto[]>(`${this.apiUrl}/listar/${categoriaId}`);
   }
+
+  listarTodos(): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.apiUrl}/listar-produtos`);
+  }
+
+   criarProduto(data: Produto): Observable<any> {
+      return this.http.post(`${this.apiUrl}/novo`, data);
+    }
 
 
 }

@@ -7,6 +7,7 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
 import { MesasComponent } from './pages/mesas/mesas.component';
 import { title } from 'process';
+import { CadastroComponent } from './pages/produtos/cadastro/cadastro.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
         path: 'produtos',
         component: ProdutosComponent,
         data: {title: 'Produtos'}
+      },
+      {
+        path: 'produtos/novo-produto',
+        component: CadastroComponent,
+        data: {title: 'Cadastro Produto'}
       },
       {
         path: 'mesas',

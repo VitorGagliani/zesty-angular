@@ -16,7 +16,6 @@ import { filter, map } from 'rxjs/operators';
     MatButtonModule,
     MatIconModule,
     RouterModule,
-    
   ],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.scss',
@@ -43,26 +42,32 @@ export class AdminPageComponent {
       icon: 'weekend',
       route: 'mesas',
     },
+    {
+      label: 'Cadastro Produtos',
+      icon: 'add',
+      route: '/produtos/novo-produto',
+    },
   ];
 
   pageTitle = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
+        filter((event) => event instanceof NavigationEnd),
         map(() => {
           let child = this.route.firstChild;
           while (child?.firstChild) {
             child = child.firstChild;
           }
           return child?.snapshot.data['title'];
-        })
+        }),
       )
-      .subscribe(title => {
+      .subscribe((title) => {
         this.pageTitle = title || '';
       });
   }
-
-
 }
