@@ -42,11 +42,6 @@ export class AdminPageComponent {
       icon: 'weekend',
       route: 'mesas',
     },
-    {
-      label: 'Cadastro Produtos',
-      icon: 'add',
-      route: '/produtos/novo-produto',
-    },
   ];
 
   pageTitle = '';
