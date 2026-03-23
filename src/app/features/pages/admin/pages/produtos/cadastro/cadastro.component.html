@@ -1,1 +1,53 @@
-<p>cadastro works!</p>
+<h2 mat-dialog-title class="title">{{data.titulo}}</h2>
+
+<div mat-dialog-content class="dialog-container">
+
+
+  <div class="info">
+    <mat-form-field appearance="outline">
+      <mat-label>Produto</mat-label>
+      <input matInput [formControl]="nome" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input matInput [formControl]="descricao" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço</mat-label>
+      <input matInput type="number" [formControl]="preco" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <input matInput [formControl]="categoriaProduto" required>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Imagem</mat-label>
+      <input matInput [formControl]="imagem" required>
+    </mat-form-field>
+
+
+
+
+
+  </div>
+
+  <div class="acoes">
+    <button mat-button color="primary" (click)="salvar()">
+      {{data.botao}}
+    </button>
+  </div>
+
+
+</div>
+
+<div class="footer">
+
+
+
+
+</div>

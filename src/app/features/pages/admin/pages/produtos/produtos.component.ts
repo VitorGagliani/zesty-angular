@@ -6,8 +6,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { DialogCadastroComponent } from '../../../../../components/shared/dialog-cadastro/dialog-cadastro.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @Component({
   selector: 'app-produtos',
@@ -16,7 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
     CommonModule,
     MatIconModule,
     MatDialogModule,
-    DialogCadastroComponent,
+    CadastroComponent
   ],
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.scss',
@@ -39,11 +39,26 @@ export class ProdutosComponent {
   //aqui to chamando a função para quando carregar a pagina, ja carregar a função
   ngOnInit() {
     this.carregarGrid();
+
   }
 
-  abrirCadastro() {
-    this.router.navigate(['adm/produtos/novo-produto'])
-  }
+abrirDialog() {
+  const dialogRef = this.dialog.open(CadastroComponent, {
+    width: '800px',
+    data: {
+      titulo: 'Cadastrar produto',
+      botao: 'Adicionar',
+    },
+  });
+//se teve retorno, chama a api e recarrega a grid
+  dialogRef.afterClosed().subscribe((result) => {
+    if (result) {
+      this.produtoService.criarProduto(result).subscribe(() => {
+        this.carregarGrid();
+      });
+    }
+  });
+}
   /*
 
         abrirDialogEditar(categoria: Categoria) {
