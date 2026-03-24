@@ -22,7 +22,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Categoria</mat-label>
 
-      <mat-select [formControl]="categoriaProduto">
+      <mat-select [formControl]="categoriaProduto" required>
+
         <mat-option value="">Selecione uma categoria</mat-option>
 
         @for (cat of categoria; track cat.id) {
@@ -47,8 +48,17 @@
   </div>
 
   <div class="acoes">
-    <button mat-button color="primary" (click)="salvar()">
-      {{data.botao}}
+    <button mat-button (click)="salvar()" [disabled]="uploading || !imagemUrl">
+
+      <ng-container *ngIf="uploading">
+        <mat-icon class="spin">autorenew</mat-icon>
+        Enviando...
+      </ng-container>
+
+      <ng-container *ngIf="!uploading">
+        {{ !imagemUrl ? 'Aguardando imagem carregar...' : data.botao }}
+      </ng-container>
+
     </button>
   </div>
 

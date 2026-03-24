@@ -8,6 +8,9 @@
         <h3>Novo produto</h3>
       </div>
     </button>
+    <div class="card" (click)="carregarGrid()">
+      <mat-icon color="primary" class="">sync</mat-icon>
+    </div>
   </div>
 
   <!-- GRID -->
@@ -16,20 +19,22 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Categoria</th>
+          <th>Nome</th>
+          <th>Descrição</th>
           <th>Preço</th>
           <th></th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let produto of produtos" >
-          <td >{{ produto.id }}</td>
-          <td >{{ produto.nome }}</td>
-          <td >{{ produto.preco.toFixed(2) }}</td>
-          <td><button >
-            <mat-icon class="mat-18" color="primary">delete</mat-icon>
-          </button></td>
+        <tr *ngFor="let produto of produtos">
+          <td (click)="abrirDialogEditar(produto)">{{ produto.id }}</td>
+          <td (click)="abrirDialogEditar(produto)">{{ produto.nome }}</td>
+          <td (click)="abrirDialogEditar(produto)">{{ produto.descricao }}</td>
+          <td (click)="abrirDialogEditar(produto)">{{ produto.preco.toFixed(2) }}</td>
+          <td (click)="deletarCategoria(produto.id!)"><button>
+              <mat-icon class="mat-18" color="primary">delete</mat-icon>
+            </button></td>
         </tr>
       </tbody>
     </table>

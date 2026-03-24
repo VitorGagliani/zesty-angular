@@ -7,18 +7,18 @@
   background: #f7f9fb;
 }
 
-/* AÇÕES */
 .actions {
   display: flex;
+  gap: 20px;
   justify-content: flex-start;
 }
 
-/* botão */
 button {
   cursor: pointer;
   background: none;
   border: none;
-} /* card botão */
+}
+
 .card {
   display: flex;
   align-items: center;
@@ -33,14 +33,12 @@ button {
   transform: scale(1.03);
 }
 
-/* ícone */
 .icon-card {
   font-size: 28px;
   width: 28px;
   height: 28px;
 }
 
-/* GRID (vira card agora) */
 .grid {
   flex: 1;
   background: white;
@@ -57,7 +55,6 @@ button {
   border-collapse: collapse;
 }
 
-/* header */
 .tabela thead {
   background: #f1f5f9;
 }
@@ -70,7 +67,6 @@ button {
   font-size: 14px;
 }
 
-/* linhas */
 .tabela td {
   padding: 14px;
   border-top: 1px solid #eee;
@@ -78,12 +74,10 @@ button {
   color: #555;
 }
 
-/* zebra */
 .tabela tbody tr:nth-child(even) {
   background: #fafafa;
 }
 
-/* hover elegante */
 .tabela tbody tr:hover {
   background: #e8f5e9;
   cursor: pointer;

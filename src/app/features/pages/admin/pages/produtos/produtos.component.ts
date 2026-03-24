@@ -12,12 +12,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 @Component({
   selector: 'app-produtos',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatDialogModule,
-    CadastroComponent
-  ],
+  imports: [CommonModule, MatIconModule, MatDialogModule, CadastroComponent],
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.scss',
 })
@@ -30,7 +25,7 @@ export class ProdutosComponent {
   constructor(private dialog: MatDialog) {}
 
   //função para carregar a grid
-  private carregarGrid() {
+  carregarGrid() {
     this.produtoService.listarTodos().subscribe((produto) => {
       this.produtos = produto;
     });
@@ -39,56 +34,48 @@ export class ProdutosComponent {
   //aqui to chamando a função para quando carregar a pagina, ja carregar a função
   ngOnInit() {
     this.carregarGrid();
-
   }
 
-abrirDialog() {
-  const dialogRef = this.dialog.open(CadastroComponent, {
-    width: '800px',
-    data: {
-      titulo: 'Cadastrar produto',
-      botao: 'Adicionar',
-    },
-  });
-//se teve retorno, chama a api e recarrega a grid
-  dialogRef.afterClosed().subscribe((result) => {
-    if (result) {
-      this.produtoService.criarProduto(result).subscribe(() => {
+  abrirDialog() {
+    const dialogRef = this.dialog.open(CadastroComponent, {
+      width: '800px',
+      data: {
+        titulo: 'Cadastrar produto',
+        botao: 'Adicionar',
+      },
+    });
+    //se teve retorno, chama a api e recarrega a grid
+    dialogRef.afterClosed().subscribe(() => {
+      this.carregarGrid();
+    });
+  }
+
+  abrirDialogEditar(produto: Produto) {
+    const dialogRef = this.dialog.open(CadastroComponent, {
+      width: '800px',
+      data: {
+        titulo: 'Editar produto',
+        botao: 'Salvar',
+        produto: produto,
+      },
+    });
+    //se teve retorno, chama a api e recarrega a grid
+    dialogRef.afterClosed().subscribe(() => {
+      //
+      //
+      this.carregarGrid();
+    });
+    //   }
+  }
+
+  deletarCategoria(id: number) {
+    this.produtoService.excluirProduto(id).subscribe({
+      next: () => {
         this.carregarGrid();
-      });
-    }
-  });
-}
-  /*
-
-        abrirDialogEditar(categoria: Categoria) {
-          const dialogRef = this.dialog.open(DialogCadastroComponent, {
-            width: '800px',
-            data: {
-              titulo: 'Editar categoria',
-              botao: 'Salvar',
-              categoria: categoria,
-            },
-          });
-          //se teve retorno, chama a api e recarrega a grid
-          dialogRef.afterClosed().subscribe((result) => {
-            if (result) {
-              this.categoriaService.editarCategoria(result).subscribe(() => {
-                this.carregarGrid();
-              });
-            }
-          });
-        }
-
-    deletarCategoria(id: number) {
-      this.categoriaService.excluirCategoria(id).subscribe({
-        next: () => {
-          this.carregarGrid();
-        },
-        error: (err) => {
-          alert(err.error);
-        }
-      });
-    }
-   */
+      },
+      error: (err) => {
+        alert(err.error);
+      },
+    });
+  }
 }
