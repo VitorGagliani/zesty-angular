@@ -21,14 +21,24 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Categoria</mat-label>
-      <input matInput [formControl]="categoriaProduto" required>
+
+      <mat-select [formControl]="categoriaProduto">
+        <mat-option value="">Selecione uma categoria</mat-option>
+
+        @for (cat of categoria; track cat.id) {
+        <mat-option [value]="cat.id">
+          {{ cat.nome }}
+        </mat-option>
+        }
+      </mat-select>
+
     </mat-form-field>
 
 
-    <mat-form-field appearance="outline">
-      <mat-label>Imagem</mat-label>
-      <input matInput [formControl]="imagem" required>
-    </mat-form-field>
+    <div class="upload">
+      <label>Imagem</label>
+      <input type="file" (change)="uploadImagem($event)">
+    </div>
 
 
 
