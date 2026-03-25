@@ -7,7 +7,7 @@
     <div class="subcontent">
       @for(item of menuItems; track item.label){
 
-      <button mat-button color="primary" [routerLink]="item.route">
+      <button mat-button color="primary" [routerLink]="item.route" (click)="sidenav.toggle()">
 
         <mat-icon>{{item.icon}}</mat-icon>
         {{item.label}}
