@@ -10,6 +10,7 @@ export interface Produto {
   imagem: string;
   preco: number;
   categoriaId: number;
+  status?: string;
 }
 
 @Injectable({
@@ -37,7 +38,11 @@ export class ProdutoService {
     return this.http.put(`${this.apiUrl}/editar`, produto);
   }
 
-  excluirProduto(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/deletar/${id}`);
+  ativarProduto(id: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/ativar/${id}`, {});
+  }
+
+  inativarProduto(id: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/inativar/${id}`, {});
   }
 }

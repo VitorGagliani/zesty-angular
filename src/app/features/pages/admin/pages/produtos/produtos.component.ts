@@ -68,8 +68,8 @@ export class ProdutosComponent {
     //   }
   }
 
-  deletarCategoria(id: number) {
-    this.produtoService.excluirProduto(id).subscribe({
+  ativaProduto(id: number) {
+    this.produtoService.ativarProduto(id).subscribe({
       next: () => {
         this.carregarGrid();
       },

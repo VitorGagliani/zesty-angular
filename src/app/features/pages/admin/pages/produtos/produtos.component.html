@@ -22,6 +22,7 @@
           <th>Nome</th>
           <th>Descrição</th>
           <th>Preço</th>
+          <th>Status</th>
           <th></th>
         </tr>
       </thead>
@@ -32,8 +33,13 @@
           <td (click)="abrirDialogEditar(produto)">{{ produto.nome }}</td>
           <td (click)="abrirDialogEditar(produto)">{{ produto.descricao }}</td>
           <td (click)="abrirDialogEditar(produto)">{{ produto.preco.toFixed(2) }}</td>
-          <td (click)="deletarCategoria(produto.id!)"><button>
-              <mat-icon class="mat-18" color="primary">delete</mat-icon>
+          <td (click)="abrirDialogEditar(produto)">
+            {{ produto.status ? (produto.status.charAt(0).toUpperCase() + produto.status.slice(1)) : '' }}
+          </td>
+          <td (click)="ativaProduto(produto.id!)"><button>
+              <mat-icon class="mat-18" color="primary"><span class="material-symbols-outlined">
+                  power_settings_new
+                </span></mat-icon>
             </button></td>
         </tr>
       </tbody>
