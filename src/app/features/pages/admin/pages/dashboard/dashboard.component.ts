@@ -4,12 +4,13 @@ import {
   pedidos,
   faturamento,
 } from './../../../../../core/services/dashboard.service';
+import { MatIconModule } from '@angular/material/icon';
 import { Component, inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
     this.carregarDashboard();
   }
 
-  
+
   carregarDashboard() {
     this.dashboardService.produtoMaisPedido().subscribe((produto) => {
       this.produto = produto[0] ?? { nome: '-' };
