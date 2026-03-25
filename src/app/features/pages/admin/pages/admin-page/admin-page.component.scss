@@ -25,6 +25,9 @@ mat-toolbar {
   font-weight: 600;
   text-transform: uppercase;
   color: #6DB573;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .subcontent {
