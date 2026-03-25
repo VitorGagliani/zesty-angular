@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { MatLabel } from '@angular/material/form-field';
 import { Mesa, MesaService } from '../../../core/services/mesa.service';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-cozinha',
@@ -21,6 +22,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatFormFieldModule,
     CommonModule,
     ScrollingModule,
+    MatIconModule
   ],
   templateUrl: './cozinha.component.html',
   styleUrl: './cozinha.component.scss',
