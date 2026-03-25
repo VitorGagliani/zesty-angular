@@ -1,1 +1,41 @@
-<p>mesas works!</p>
+<div class="container">
+
+  <!-- AÇÕES -->
+  <div class="actions">
+    <button (click)="abrirDialog()">
+      <div class="card">
+        <mat-icon color="primary" class="icon-card">add</mat-icon>
+        <h3>Nova mesa </h3>
+      </div>
+    </button>
+    <div class="card" (click)="carregarGrid()">
+      <mat-icon color="primary" class="">sync</mat-icon>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Mesa</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let mesas of mesa" >
+          <td (click)="abrirDialogEditar(mesas)">{{ mesas.id }}</td>
+          <td (click)="abrirDialogEditar(mesas)">{{ mesas.numero }}</td>
+          <td (click)="abrirDialogEditar(mesas)">{{ mesas.status }}</td>
+          <td><button (click)="deletarMesa(mesas.id!)">
+            <mat-icon class="mat-18" color="primary">delete</mat-icon>
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

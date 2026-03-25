@@ -20,6 +20,8 @@ interface DialogData {
   titulo: string;
   botao: string;
   categoria?: any;
+  mesa?: any,
+  numero?: any,
 }
 
 @Component({
@@ -53,8 +55,9 @@ export class DialogCadastroComponent implements OnInit {
   salvar() {
     //crio a constante e salvo com os dados do data da pagina
   const resultado = {
-    id: this.data.categoria?.id,
+    id: this.data.categoria?.id ?? this.data.mesa?.id,
     nome: this.nome.value,
+    numero: this.nome.value
   };
   //passo o resultado para a pagina para manipular com o afterClose()
   this.dialogRef.close(resultado);
@@ -63,6 +66,10 @@ export class DialogCadastroComponent implements OnInit {
   ngOnInit() {
   if (this.data.categoria) {
     this.nome.setValue(this.data.categoria.nome); //seto o valor do form com o valor passado na categoria
+  }
+
+  if(this.data.mesa){
+    this.nome.setValue(this.data.mesa.numero); //seto o valor do form com o valor passado na categoria
   }
 }
 

@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  gap: 20px;
+  background: #f7f9fb;
+}
+
+/* AÇÕES */
+.actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* botão */
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+} /* card botão */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* ícone */
+.icon-card {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+/* GRID (vira card agora) */
+.grid {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* tabela */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* header */
+.tabela thead {
+  background: #f1f5f9;
+}
+
+.tabela th {
+  text-align: left;
+  padding: 14px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+/* linhas */
+.tabela td {
+  padding: 14px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+}
+
+/* zebra */
+.tabela tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* hover elegante */
+.tabela tbody tr:hover {
+  background: #e8f5e9;
+  cursor: pointer;
+  transition: 0.2s;
+}
