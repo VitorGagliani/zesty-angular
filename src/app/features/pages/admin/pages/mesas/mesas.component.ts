@@ -74,15 +74,5 @@ export class MesasComponent {
         });
       }
 
-  deletarMesa(id: number) {
-    this.mesaService.excluirMesa(id).subscribe({
-      next: () => {
-        this.carregarGrid();
-      },
-      error: (err) => {
-        alert(err.error);
-      }
-    });
-  }
 
 }
