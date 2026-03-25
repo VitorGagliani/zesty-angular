@@ -73,12 +73,16 @@ export class CadastroComponent implements OnInit {
     validators: [Validators.required],
   });
 
+  status = new FormControl<string | null>(null, {
+    validators: [Validators.required],
+  });
+
   imagemUrl: string = '';
   uploading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private dialogRef: MatDialogRef<CadastroComponent>
+    private dialogRef: MatDialogRef<CadastroComponent>,
   ) {}
 
   // ✅ UPLOAD IMAGEM
@@ -112,21 +116,22 @@ export class CadastroComponent implements OnInit {
     console.log('URL da imagem:', this.imagemUrl);
   }
 
-  // ✅ MARCAR CAMPOS COMO TOCADOS
+
   marcarCamposComoTocados() {
     this.nome.markAsTouched();
     this.descricao.markAsTouched();
     this.preco.markAsTouched();
     this.categoriaProduto.markAsTouched();
+    this.status.markAsTouched();
   }
 
-  // ✅ SALVAR (CREATE + UPDATE)
   salvar() {
     if (
       this.nome.invalid ||
       this.descricao.invalid ||
       this.preco.invalid ||
       this.categoriaProduto.invalid ||
+      this.status.invalid||
       !this.imagemUrl
     ) {
       this.marcarCamposComoTocados();
@@ -140,6 +145,7 @@ export class CadastroComponent implements OnInit {
       imagem: this.imagemUrl,
       preco: Number(this.preco.value),
       categoriaId: Number(this.categoriaProduto.value),
+      status:this.data.produto?.status
     };
 
     if (this.data.produto) {
@@ -161,9 +167,7 @@ export class CadastroComponent implements OnInit {
       this.nome.setValue(this.data.produto.nome);
       this.descricao.setValue(this.data.produto.descricao);
       this.preco.setValue(this.data.produto.preco.toString());
-      this.categoriaProduto.setValue(
-        this.data.produto.categoriaId?.toString()
-      );
+      this.categoriaProduto.setValue(this.data.produto.categoriaId?.toString());
       this.imagemUrl = this.data.produto.imagem;
     }
 
